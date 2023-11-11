@@ -92,9 +92,11 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, index_sel
 
     print(f"\nResultados para {model.__class__.__name__}:")
     print("Melhores parâmetros encontrados:")
+    output["output.best_params_"] = grid_search.best_params_
+    for param in grid_search.best_params_:
+        output[f"output.{param}"] = param
     print(grid_search.best_params_)
 
-    output["output.best_params_"] = grid_search.best_params_
     print("Relatório de Classificação:")
     # grid_search.best_params_
     # print(classification_report(y_test, y_pred))
@@ -113,21 +115,21 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, index_sel
     output["output.max_error"] = max_error(y_test, y_pred)
     output["output.mean_absolute_error"] = mean_absolute_error(y_test, y_pred)
     output["output.mean_squared_error"] = mean_squared_error(y_test, y_pred)
-    output["output.mean_squared_error"] = mean_squared_error(y_test, y_pred)
-    output["output.mean_squared_log_error"] = mean_squared_log_error(
-        y_test, y_pred)
+
+    # output["output.mean_squared_log_error"] = mean_squared_log_error(
+    #     y_test, y_pred)
     output["output.median_absolute_error"] = median_absolute_error(
         y_test, y_pred)
     output["output.r2_score"] = r2_score(y_test, y_pred)
-    output["output.mean_poisson_deviance"] = mean_poisson_deviance(
-        y_test, y_pred)
-    output["output.mean_gamma_deviance"] = mean_gamma_deviance(y_test, y_pred)
-    output["output.mean_absolute_percentage_error"] = mean_absolute_percentage_error(
-        y_test, y_pred)
-    output["output.d2_absolute_error_score"] = d2_absolute_error_score(
-        y_test, y_pred)
-    output["output.d2_pinball_score"] = d2_pinball_score(y_test, y_pred)
-    output["output.d2_tweedie_score"] = d2_tweedie_score(y_test, y_pred)
+    # output["output.mean_poisson_deviance"] = mean_poisson_deviance(
+    #     y_test, y_pred)
+    # output["output.mean_gamma_deviance"] = mean_gamma_deviance(y_test, y_pred)
+    # output["output.mean_absolute_percentage_error"] = mean_absolute_percentage_error(
+    #     y_test, y_pred)
+    # output["output.d2_absolute_error_score"] = d2_absolute_error_score(
+    #     y_test, y_pred)
+    # output["output.d2_pinball_score"] = d2_pinball_score(y_test, y_pred)
+    # output["output.d2_tweedie_score"] = d2_tweedie_score(y_test, y_pred)
 #     scoring = {
 #         'neg_mean_squared_error': 'neg_mean_squared_error',
 #         'neg_mean_absolute_error': 'neg_mean_absolute_error',
