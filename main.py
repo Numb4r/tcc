@@ -17,13 +17,14 @@ import pandas as pd
 import utils as u
 
 
-def run(data, results, z_score_threshold: int, selector_n: int, model, index_selector: int):
+def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits: int):
     # print("PARAMGRID:", param_grid)
 
     output = {
         "input.z_score_threshold": z_score_threshold,
         "input.selector_n_params": selector_n,
-        "input.model": model.__class__.__name__
+        "input.model": model.__class__.__name__,
+        "input.n_splits": n_splits
     }
 
     X_train, X_test, y_train, y_test = u.split_train_test(data, results)
@@ -45,9 +46,9 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, index_sel
     # ==================================================================
     selector_n = min(selector_n, len(indices))
     scaler = MinMaxScaler()
-    l_selector = [RFE(estimator=model, n_features_to_select=selector_n), SelectKBest(score_func=f_regression,
-                                                                                     k=selector_n)]
-    selector = l_selector[index_selector]
+
+    selector = SelectKBest(score_func=f_regression,
+                           k=selector_n)
     output["input.selector"] = selector.__class__.__name__
 
     # kf = RepeatedKFold(n_splits=n_splits, n_repeats=30, random_state=42)
@@ -74,7 +75,7 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, index_sel
     }
     scoring = {'neg_mean_squared_error': 'neg_mean_squared_error', 'r2': 'r2'}
 
-    cv = 5
+    cv = KFold(n_splits=n_splits)
     param_grid = {
         # Ajuste o parâmetro dentro do regressor no pipeline
         'regressor__max_depth': [3, 5, 7],
@@ -102,25 +103,18 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, index_sel
     # print(classification_report(y_test, y_pred))
     print("Acurácia média durante a validação cruzada:")
     print(f"Acurácia média: {grid_search.best_score_:.4f}")
-    print("="*50)
-    # a = DecisionTreeRegressor()
-    new_params = {k.replace('regressor__', ''): v for k,
-                  v in grid_search.best_params_.items()}
-    model.set_params(**new_params)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
 
     output["output.explained_variance_score"] = explained_variance_score(
         y_test, y_pred)
     output["output.max_error"] = max_error(y_test, y_pred)
     output["output.mean_absolute_error"] = mean_absolute_error(y_test, y_pred)
     output["output.mean_squared_error"] = mean_squared_error(y_test, y_pred)
-
-    # output["output.mean_squared_log_error"] = mean_squared_log_error(
-    #     y_test, y_pred)
     output["output.median_absolute_error"] = median_absolute_error(
         y_test, y_pred)
     output["output.r2_score"] = r2_score(y_test, y_pred)
+    print(output)
+    print("="*50)
+
     # output["output.mean_poisson_deviance"] = mean_poisson_deviance(
     #     y_test, y_pred)
     # output["output.mean_gamma_deviance"] = mean_gamma_deviance(y_test, y_pred)
@@ -164,13 +158,13 @@ def main():
     prever = ["opt.runtime",]
     data, results = u.load_files()
     results = u.cleaning_columns(results, keep=prever)
+
     params = [
-        list(range(1, 10)),  # Z_score_threshold
-        list(range(1, 24)),  # selector_k RFE,KBEST
-        # param_grid
+        np.linspace(1, 3, 10),  # Z_score_threshold
+        list(range(5, 24)),  # selector_k RFE,KBEST
         [DecisionTreeRegressor(random_state=0), RandomForestRegressor(
             random_state=0), GradientBoostingRegressor(random_state=0)],  # models
-        [0, 1],  # index list selector method
+        list(range(2, 6)),  # n_split KFold
     ]
     output = []
     for i in list(product(*params)):
