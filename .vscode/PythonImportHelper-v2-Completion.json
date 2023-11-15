@@ -1,0 +1,452 @@
+[
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "MinMaxScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "MinMaxScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "stats",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "SelectKBest",
+        "importPath": "sklearn.feature_selection",
+        "description": "sklearn.feature_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.feature_selection",
+        "documentation": {}
+    },
+    {
+        "label": "f_regression",
+        "importPath": "sklearn.feature_selection",
+        "description": "sklearn.feature_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.feature_selection",
+        "documentation": {}
+    },
+    {
+        "label": "RFE",
+        "importPath": "sklearn.feature_selection",
+        "description": "sklearn.feature_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.feature_selection",
+        "documentation": {}
+    },
+    {
+        "label": "Pipeline",
+        "importPath": "sklearn.pipeline",
+        "description": "sklearn.pipeline",
+        "isExtraImport": true,
+        "detail": "sklearn.pipeline",
+        "documentation": {}
+    },
+    {
+        "label": "DecisionTreeRegressor",
+        "importPath": "sklearn.tree",
+        "description": "sklearn.tree",
+        "isExtraImport": true,
+        "detail": "sklearn.tree",
+        "documentation": {}
+    },
+    {
+        "label": "explained_variance_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "max_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_absolute_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_squared_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_squared_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_squared_log_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "median_absolute_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "r2_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_poisson_deviance",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_gamma_deviance",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "mean_absolute_percentage_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "d2_absolute_error_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "d2_pinball_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "d2_tweedie_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "RandomForestRegressor",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "GradientBoostingRegressor",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "product",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "utils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "utils",
+        "description": "utils",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"tcc-py3.10\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"tcc-py3.10\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"tcc-py3.10\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"tcc-py3.10\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"tcc-py3.10\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"../lib/python3.10/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "load_csv_file",
+        "kind": 2,
+        "importPath": "utils.fileio",
+        "description": "utils.fileio",
+        "peekOfCode": "def load_csv_file(filePath) -> pd.DataFrame | None:\n    file = None\n    try:\n        file = pd.read_csv(filePath)\n        return file\n    except:\n        raise IOError(f\"Could not open file '%s' for reading\")\ndef load_files(data_path: str = \"./files/miplib2017-selected.csv\", results_path: str = \"./files/results.csv\") -> (pd.DataFrame, pd.DataFrame):\n    data = load_csv_file(data_path)\n    data = data.drop(\"STATUS\", axis=1)",
+        "detail": "utils.fileio",
+        "documentation": {}
+    },
+    {
+        "label": "load_files",
+        "kind": 2,
+        "importPath": "utils.fileio",
+        "description": "utils.fileio",
+        "peekOfCode": "def load_files(data_path: str = \"./files/miplib2017-selected.csv\", results_path: str = \"./files/results.csv\") -> (pd.DataFrame, pd.DataFrame):\n    data = load_csv_file(data_path)\n    data = data.drop(\"STATUS\", axis=1)\n    data = data.drop(\"OBJECTIVE\", axis=1)\n    results = load_csv_file(results_path)\n    key_r = results.keys()\n    key_d = data.keys()\n    merged = pd.merge(data, results, left_on='NAME',\n                      right_on='instance', how='inner')\n    data = merged[list(key_d)]",
+        "detail": "utils.fileio",
+        "documentation": {}
+    },
+    {
+        "label": "cleaning_columns",
+        "kind": 2,
+        "importPath": "utils.preprocessing",
+        "description": "utils.preprocessing",
+        "peekOfCode": "def cleaning_columns(data: pd.DataFrame, keep: list() = [], remove: list = []):\n    if keep is not None or len(keep) != 0:\n        data = data[[*keep]]\n    if remove is not None or len(remove) != 0:\n        for k, v in enumerate(remove):\n            data.drop(v, axis=1)\n    return data\ndef split_train_test(data, results, test_size=0.10, random_state=0):\n    X_train, X_test, y_train, y_test = train_test_split(\n        data, results, test_size=test_size, random_state=random_state)",
+        "detail": "utils.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "split_train_test",
+        "kind": 2,
+        "importPath": "utils.preprocessing",
+        "description": "utils.preprocessing",
+        "peekOfCode": "def split_train_test(data, results, test_size=0.10, random_state=0):\n    X_train, X_test, y_train, y_test = train_test_split(\n        data, results, test_size=test_size, random_state=random_state)\n    return X_train, X_test, y_train, y_test\ndef normalize_data(data: pd.DataFrame, columns: list = None, scaler=MinMaxScaler()):\n    if columns is None:\n        columns = list(data.keys())\n    data[columns] = scaler.fit_transform(data[columns])\n    return data\n# # Ajuste o scaler aos dados e transforme as colunas selecionadas",
+        "detail": "utils.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_data",
+        "kind": 2,
+        "importPath": "utils.preprocessing",
+        "description": "utils.preprocessing",
+        "peekOfCode": "def normalize_data(data: pd.DataFrame, columns: list = None, scaler=MinMaxScaler()):\n    if columns is None:\n        columns = list(data.keys())\n    data[columns] = scaler.fit_transform(data[columns])\n    return data\n# # Ajuste o scaler aos dados e transforme as colunas selecionadas\ndef get_outliers(df: pd.DataFrame, z_score_threshold: int = 3):\n    # Defina um limiar para identificar outliers (por exemplo, 3)\n    # z_score_threshold = 3\n    # Calcule os escores Z para todas as colunas",
+        "detail": "utils.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "get_outliers",
+        "kind": 2,
+        "importPath": "utils.preprocessing",
+        "description": "utils.preprocessing",
+        "peekOfCode": "def get_outliers(df: pd.DataFrame, z_score_threshold: int = 3):\n    # Defina um limiar para identificar outliers (por exemplo, 3)\n    # z_score_threshold = 3\n    # Calcule os escores Z para todas as colunas\n    z_scores = stats.zscore(df)\n    # Identifique outliers em todas as colunas\n    outliers_indices = (abs(z_scores) > z_score_threshold).any(axis=1)\n    # Crie um DataFrame booleano indicando a presença de outliers em cada célula\n    # outliers_df = pd.DataFrame(outliers, columns=df.columns)\n    # outlier_indices = outliers.any(axis=1).nonzero()[0]",
+        "detail": "utils.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "run",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits: int):\n    # print(\"PARAMGRID:\", param_grid)\n    output = {\n        \"input.z_score_threshold\": z_score_threshold,\n        \"input.selector_n_params\": selector_n,\n        \"input.model\": model.__class__.__name__,\n        \"input.n_splits\": n_splits\n    }\n    X_train, X_test, y_train, y_test = u.split_train_test(data, results)\n    # print(len(X_train.keys()))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    \"\"\"\n    dividir cada tipo quantidade de restricoes e variaveis pela quantidade total\n    \"\"\"\n    prever = [\"opt.runtime\",]\n    data, results = u.load_files()\n    results = u.cleaning_columns(results, keep=prever)\n    params = [\n        np.linspace(1, 3, 10),  # Z_score_threshold\n        list(range(5, 24)),  # selector_k RFE,KBEST",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "arquivo_csv",
+        "kind": 5,
+        "importPath": "to_excel",
+        "description": "to_excel",
+        "peekOfCode": "arquivo_csv = 'output.csv'\ndados_csv = pd.read_csv(arquivo_csv)\n# Especificar o nome do arquivo XLSX de saída\narquivo_xlsx = 'saida.xlsx'\n# Salvar os dados no arquivo XLSX\ndados_csv.to_excel(arquivo_xlsx, index=False)\nprint(f'O arquivo CSV foi convertido com sucesso para {arquivo_xlsx}.')",
+        "detail": "to_excel",
+        "documentation": {}
+    },
+    {
+        "label": "dados_csv",
+        "kind": 5,
+        "importPath": "to_excel",
+        "description": "to_excel",
+        "peekOfCode": "dados_csv = pd.read_csv(arquivo_csv)\n# Especificar o nome do arquivo XLSX de saída\narquivo_xlsx = 'saida.xlsx'\n# Salvar os dados no arquivo XLSX\ndados_csv.to_excel(arquivo_xlsx, index=False)\nprint(f'O arquivo CSV foi convertido com sucesso para {arquivo_xlsx}.')",
+        "detail": "to_excel",
+        "documentation": {}
+    },
+    {
+        "label": "arquivo_xlsx",
+        "kind": 5,
+        "importPath": "to_excel",
+        "description": "to_excel",
+        "peekOfCode": "arquivo_xlsx = 'saida.xlsx'\n# Salvar os dados no arquivo XLSX\ndados_csv.to_excel(arquivo_xlsx, index=False)\nprint(f'O arquivo CSV foi convertido com sucesso para {arquivo_xlsx}.')",
+        "detail": "to_excel",
+        "documentation": {}
+    }
+]
