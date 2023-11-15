@@ -1,3 +1,6 @@
+import math
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, VotingRegressor
+from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import GridSearchCV, RepeatedKFold, cross_validate, KFold
 
 
@@ -17,24 +20,26 @@ import pandas as pd
 import utils as u
 
 
-def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits: int):
+def run(data, results, z_score_threshold: int, selector_n: int, str_model: str, n_splits: int):
     # print("PARAMGRID:", param_grid)
 
     output = {
         "input.z_score_threshold": z_score_threshold,
         "input.selector_n_params": selector_n,
-        "input.model": model.__class__.__name__,
+        "input.model": str_model,
         "input.n_splits": n_splits
     }
-
+    model = u.get_model(str_model)
     X_train, X_test, y_train, y_test = u.split_train_test(data, results)
     # print(len(X_train.keys()))
     # ==================================================================
     #  Remocao de outliers
     # ==================================================================
-    indices = u.get_outliers(X_train, z_score_threshold=z_score_threshold)
+    indices = u.get_outliers(y_train, z_score_threshold=z_score_threshold)
     output["input.num_outliers"] = len(indices)
     X_train = X_train.drop(index=indices)
+    # print(data.any() == math.nan)
+
     y_train = y_train.drop(index=indices)
     # ==================================================================
     #  Remocao de outliers
@@ -56,7 +61,7 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
     pipeline = Pipeline([
         ('scaler', scaler),
         ("selector", selector),
-        ("regressor", DecisionTreeRegressor())
+        ("regressor", model)
     ])
     # ==================================================================
     #  Montagem do Pipeline
@@ -78,9 +83,9 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
     cv = KFold(n_splits=n_splits)
     param_grid = {
         # Ajuste o parâmetro dentro do regressor no pipeline
-        'regressor__max_depth': [3, 5, 7],
-        'regressor__min_samples_split': [2, 5, 10],
-        'regressor__min_samples_leaf': [1, 2, 4]
+        'regressor__max_depth': [3, 4, 5, 6, 7],
+        'regressor__min_samples_split': [2, 3, 4, 5, 10],
+        'regressor__min_samples_leaf': [1, 2, 3, 4]
     }
     grid_search = GridSearchCV(
         pipeline, param_grid, cv=cv, scoring='r2', refit='r2', n_jobs=-1)
@@ -94,9 +99,10 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
     print(f"\nResultados para {model.__class__.__name__}:")
     print("Melhores parâmetros encontrados:")
     output["output.best_params_"] = grid_search.best_params_
-    for param in grid_search.best_params_:
-        output[f"output.{param}"] = param
-    print(grid_search.best_params_)
+
+    for param in param_grid.keys():
+        output[f"output.{param}"] = grid_search.best_params_[param]
+        print(f"Param {param}: {grid_search.best_params_[param]}")
 
     print("Relatório de Classificação:")
     # grid_search.best_params_
@@ -114,7 +120,8 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
     output["output.r2_score"] = r2_score(y_test, y_pred)
     print(output)
     print("="*50)
-
+    # new_params = {k.replace('regressor__', ''): v for k,
+    #               v in grid_search.best_params_.items()}
     # output["output.mean_poisson_deviance"] = mean_poisson_deviance(
     #     y_test, y_pred)
     # output["output.mean_gamma_deviance"] = mean_gamma_deviance(y_test, y_pred)
@@ -135,7 +142,7 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
 
 # # Exibir os resultados
 #     for metric, values in resultados.items():
-#         if metric != 'fit_time' and metric != 'score_time':
+#         if metric != 'fit_time'and metric != 'score_time':
 #             output[f"output.{metric}"] = values.mean()
 #             output[f"output.{metric}.standard_deviation"] = values.std()
 #             print(
@@ -155,25 +162,39 @@ def run(data, results, z_score_threshold: int, selector_n: int, model, n_splits:
 
 
 def main():
-    prever = ["opt.runtime",]
+
+    prever = ["opt.runtime"]
+    prever = ["opt.nodes"]
     data, results = u.load_files()
     results = u.cleaning_columns(results, keep=prever)
+    # Adicione mais colunas conforme necessário
+    variables_columns = ['INTEGERS', 'BINARIES', 'CONTINUOUS']
+    constraints_columns = ['CONSTR.EMPTY', 'CONSTR.FREE', 'CONSTR.SINGLETON', 'CONSTR.AGGREGATION', 'CONSTR.PRECEDENCE', 'CONSTR.VARIABLE.BOUND', 'CONSTR.SET.PARTITIONING', 'CONSTR.SET.PACKING', 'CONSTR.SET.COVERING',
+                           'CONSTR.BINPACKING', 'CONSTR.KNAPSACK', 'CONSTR.INTEGER.KNAPSACK', 'CONSTR.CARDINALITY', 'CONSTR.INVARIANT.KNAPSACK', 'CONSTR.EQUATION.KNAPSACK', 'CONSTR.MIXED.BINARY', 'CONSTR.GENERAL.LINEAR']
+    data = u.column_divisor(data, variables_columns, "INTEGERS")
+    data = u.column_divisor(data, constraints_columns, "CONSTRAINTS")
 
     params = [
         np.linspace(1, 3, 10),  # Z_score_threshold
         list(range(5, 24)),  # selector_k RFE,KBEST
-        [DecisionTreeRegressor(random_state=0), RandomForestRegressor(
-            random_state=0), GradientBoostingRegressor(random_state=0)],  # models
+        ['DecisionTree', 'RandomForest',
+            'GradientBoosting'],
+        # , 'MLP', 'Voting'],  # models
         list(range(2, 6)),  # n_split KFold
     ]
     output = []
     for i in list(product(*params)):
+        # print(u.get_model(i[2]).__class__.__name__)
         output.append(
             run(data, results, *i)
         )
+
     df = pd.DataFrame(output)
     df.to_csv("output.csv")
 
 
 if __name__ == "__main__":
     main()
+
+
+# Parâmetros para o Decision Tree

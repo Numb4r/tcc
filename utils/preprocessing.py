@@ -45,3 +45,9 @@ def get_outliers(df: pd.DataFrame, z_score_threshold: int = 3):
     # outlier_indices = outliers.any(axis=1).nonzero()[0]
     # # Exiba o DataFrame com informações sobre os outliers
     return df[outliers_indices].index
+
+
+def column_divisor(x, numerator: list, denominator: int):
+    for n in numerator:
+        x[n] = x[n] / x[denominator]
+    return x
