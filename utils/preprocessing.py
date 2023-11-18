@@ -21,12 +21,6 @@ def split_train_test(data, results, test_size=0.10, random_state=0):
     return X_train, X_test, y_train, y_test
 
 
-def normalize_data(data: pd.DataFrame, columns: list = None, scaler=MinMaxScaler()):
-    if columns is None:
-        columns = list(data.keys())
-    data[columns] = scaler.fit_transform(data[columns])
-    return data
-
 # # Ajuste o scaler aos dados e transforme as colunas selecionadas
 
 
@@ -51,3 +45,12 @@ def column_divisor(x, numerator: list, denominator: int):
     for n in numerator:
         x[n] = x[n] / x[denominator]
     return x
+
+
+def normalize_columns(data):
+    variables_columns = ['INTEGERS', 'BINARIES', 'CONTINUOUS']
+    constraints_columns = ['CONSTR.EMPTY', 'CONSTR.FREE', 'CONSTR.SINGLETON', 'CONSTR.AGGREGATION', 'CONSTR.PRECEDENCE', 'CONSTR.VARIABLE.BOUND', 'CONSTR.SET.PARTITIONING', 'CONSTR.SET.PACKING', 'CONSTR.SET.COVERING',
+                           'CONSTR.BINPACKING', 'CONSTR.KNAPSACK', 'CONSTR.INTEGER.KNAPSACK', 'CONSTR.CARDINALITY', 'CONSTR.INVARIANT.KNAPSACK', 'CONSTR.EQUATION.KNAPSACK', 'CONSTR.MIXED.BINARY', 'CONSTR.GENERAL.LINEAR']
+    data = column_divisor(data, variables_columns, "VARIABLES")
+    data = column_divisor(data, constraints_columns, "CONSTRAINTS")
+    return data
