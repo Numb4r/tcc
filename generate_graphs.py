@@ -1,3 +1,4 @@
+from scipy import stats
 from itertools import product
 import numpy as np
 import pandas as pd
@@ -11,11 +12,11 @@ base_link = "https://drive.google.com/uc?id="
 
 def create_graph(x, y, labelX, labelY, tipoGrafico: str, title=None, saveFile=False):
     # fig = plt.figure(3, figsize=((20, 5)))
-    x = np.array(x[labelX])
-    y = np.array(y[labelY])
+    # x = np.array(x[labelX])
+    # y = np.array(y[labelY])
     fig, ax = plt.subplots()  # a figure with a single Axes
     if title is None:
-        title = f"Grafico de {labelX} por {labelY}"
+        title = f"Gráfico de {labelX} por {labelY}"
     # Criar o gráfico de linha
     print(min(y), max(y))
 
@@ -35,7 +36,7 @@ def create_graph(x, y, labelX, labelY, tipoGrafico: str, title=None, saveFile=Fa
         ax.plot(x, y, label=labelX)
     if tipoGrafico == 'scatter':
         ax.scatter(x, y, label=labelX)
-    ax.legend()
+    # ax.legend()
     # Exibir o gráfico
     if saveFile:
         string_funcao = str(tipoGrafico)
@@ -50,20 +51,18 @@ def create_graph(x, y, labelX, labelY, tipoGrafico: str, title=None, saveFile=Fa
     fig.clear()
     plt.close(fig)
 
+
 def create_graph_single_data(y, labelY, tipoGrafico: str, title=None, saveFile=False):
     y = np.array(y[labelY])
-    
-    if y.size <=0 : 
+
+    if y.size <= 0:
         return
     x = np.arange(y.size)
     if title is None:
-        title = f"Grafico de {labelY}"
+        title = f"Gráfico de {labelY}"
     fig, ax = plt.subplots()  # a figure with a single Axes
-    
+
     # Criar o gráfico de linha
-
-
-
 
     ax.set_ylim(min(y), max(y))
     ax.set_xlim(min(x), max(x))
@@ -93,14 +92,12 @@ def create_graph_single_data(y, labelY, tipoGrafico: str, title=None, saveFile=F
     fig.show()
     fig.clear()
     plt.close(fig)
-    
-    
 
 
 def box_plot(x, title, saveFile=False):
     fig, ax = plt.subplots()  # a figure with a single Axes
 
-    ax.boxplot(x[title])
+    ax.boxplot(x)
     ax.set_xlabel(title)
     # ax.legend()
     ax.set_title(f'Gráfico de caixa {title}')
@@ -108,7 +105,7 @@ def box_plot(x, title, saveFile=False):
     plt.close(fig)
 
 
-def main():
+def startup():
     try:
         x = pd.read_csv("files/miplib2017-selected.csv")
         y = pd.read_csv("files/results.csv")
@@ -137,7 +134,11 @@ def main():
     dropsy = ["instance", 'seed', 'opt.status']
     x = x.drop(dropsx, axis=1)
     y = y.drop(dropsy, axis=1)
+    return x, y
 
+
+def main():
+    x, y = startup()
     paramsx = [
         x.keys(),
         ['plot',   'scatter', 'bar']
@@ -163,4 +164,78 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    x, y = startup()
+    x_t = x["VARIABLES"]
+
+    indices = u.get_outliers(x, z_score_threshold=3)
+    x = x.drop(index=indices)
+    # indices = u.get_outliers(x, z_score_threshold=3)
+    # x = x.drop(index=indices)
+    # indices = u.get_outliers(x, z_score_threshold=3)
+    # x = x.drop(index=indices)
+    # indices = u.get_outliers(x, z_score_threshold=3)
+    # x = x.drop(index=indices)
+    x_variables = np.array(x["VARIABLES"])
+    x_constrants = np.array(x["CONSTRAINTS"])
+    labelX = "Log Variáveis"
+    labelY = "Log Restrições"
+    tipoGrafico = "scatter"
+    saveFile = True
+    title = None
+
+    fig, ax = plt.subplots()  # a figure with a single Axes
+    if title is None:
+        title = "Gráfico de Variáveis por Restrições"
+    # Criar o gráfico de linha
+
+    print(tipoGrafico)
+    ax.set_ylim(min(x_constrants), max(x_constrants))
+    ax.set_xlim(min(x_variables), max(x_variables))
+    ax.set_xlabel(labelX)
+    ax.set_ylabel(labelY)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+
+    ax.set_title(title)
+    if tipoGrafico == 'bar':
+        indices_zero = np.where(x_constrants == 0)[0]
+        x_variables = np.delete(x_variables, indices_zero)
+        x_constrants = np.delete(x_constrants, indices_zero)
+        ax.bar(x_variables, x_constrants, width=30, label=labelX)
+    if tipoGrafico == 'plot':
+        ax.plot(x_variables, x_constrants, label=labelX)
+    if tipoGrafico == 'scatter':
+        ax.scatter(x_variables, x_constrants, label=labelX)
+    # ax.legend()
+    # Exibir o gráfico
+    if saveFile:
+        string_funcao = str(tipoGrafico)
+        match = re.search(r"<function (\w+)", string_funcao)
+        if match:
+            nome_funcao = match.group(1)
+        else:
+            nome_funcao = tipoGrafico
+        fig.savefig(f'graph/{nome_funcao}_{title}.png')
+
+    fig.show()
+    fig.clear()
+    plt.close(fig)
+
+    # create_graph(x_variables, x_constrants, labelX="Variáveis",
+    #              labelY="Restrições", tipoGrafico="scatter", saveFile=True)
+
+    fig, ax = plt.subplots()  # a figure with a single Axes
+
+    ax.boxplot(x_variables)
+    ax.set_xlabel("Quantidade de variáveis")
+    # ax.legend()
+    ax.set_title(f'Gráfico de caixa de quantidae de variáveis')
+    fig.savefig(f'graph/box_plot_variaveis.png')
+    plt.close(fig)
+
+    ax.boxplot(x_constrants)
+    ax.set_xlabel("Quantidade de restrições")
+    # ax.legend()
+    ax.set_title(f'Gráfico de caixa de quantidae de restrições')
+    fig.savefig(f'graph/box_plot_restrições.png')
+    plt.close(fig)

@@ -87,6 +87,8 @@ def run(data, results, z_score_threshold: int, selector_n: int, str_model: str, 
         y_test, y_pred)
     output["output.r2_score"] = r2_score(y_test, y_pred)
     print(output)
+    print("pred:",y_pred)
+    print("test:",y_test)
     print("="*50)
     # new_params = {k.replace('regressor__', ''): v for k,
     #               v in grid_search.best_params_.items()}
@@ -131,8 +133,8 @@ def run(data, results, z_score_threshold: int, selector_n: int, str_model: str, 
 
 def main():
 
-    prever = ["opt.runtime"]
-    # prever = ["opt.nodes"]
+    # prever = ["opt.runtime"]
+    prever = ["opt.nodes"]
     data, results = u.load_files()
     results = u.cleaning_columns(results, keep=prever)
     data = u.normalize_columns(data)

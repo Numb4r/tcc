@@ -1,0 +1,7 @@
+graph/
+*.txt
+*.csv
+*.zip
+*.lock
+*.json
+*.xlsx
